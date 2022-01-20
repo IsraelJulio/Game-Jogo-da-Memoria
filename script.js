@@ -4,7 +4,7 @@ let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockBoard = false;
 let tentativas = 0;
-let atualRecord = 0;
+let atualRecord = localStorage.record ?? 0;
 let tentativasHTML = document.getElementById("pontos")
 let recordHTML = document.getElementById("record")
 //função para virar carta
@@ -32,11 +32,15 @@ function checkForMatch() {
         disableCards();
         acertos = acertos+2;
         if(acertos == cards.length){
+            debugger;
             if(atualRecord > tentativas ||(atualRecord == 0)){
                 atualRecord = tentativas;
                 recordHTML.innerHTML = tentativas;
+                localStorage.record = tentativas
+                finalizePartida(true)
+                return;
             }
-            finalizePartida();
+            finalizePartida(false);
         }
         return;
     }
@@ -86,8 +90,40 @@ cards.forEach((card) => {
 (function inicialisaPlacares(){
     tentativasHTML.innerHTML = tentativas;
     recordHTML.innerHTML = atualRecord;
+    // iniciaModal('modal-fim',true)
 })();
 
-function finalizePartida(){
-    alert();
+function finalizePartida(newrecord){
+    iniciaModal('modal-fim',newrecord)
+    return
+}
+
+function iniciaModal(modalID,newrecord) {
+    
+        const modal = document.getElementById(modalID);
+        if(modal) {
+
+            document.getElementById("tentativasFinais").innerHTML = tentativas;
+            document.getElementById("novorecord").style.display = "flex";
+            modal.classList.add('mostrar');            
+            modal.addEventListener('click', (e) => {
+                if(e.target.className == 'button'){
+                    reiniciarPartida();
+                }
+                if(e.target.id == modalID || e.target.className == 'fechar') {
+                    modal.classList.remove('mostrar');                    
+                    document.getElementById(novorecord).style.display = "none";                   
+                }
+            });
+        }
+    
+}
+document.addEventListener('scroll', () => {
+    if(window.pageYOffset > 800) {
+        iniciaModal('modal-promocao')
+    }
+})
+
+function reiniciarPartida(){
+     document.location.reload(false);
 }
