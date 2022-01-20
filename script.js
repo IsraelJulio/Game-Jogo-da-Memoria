@@ -31,6 +31,13 @@ function checkForMatch() {
     if(firstCard.dataset.card === secondCard.dataset.card) {
         disableCards();
         acertos = acertos+2;
+        if(acertos == cards.length){
+            if(atualRecord > tentativas ||(atualRecord == 0)){
+                atualRecord = tentativas;
+                recordHTML.innerHTML = tentativas;
+            }
+            finalizePartida();
+        }
         return;
     }
 
@@ -80,3 +87,7 @@ cards.forEach((card) => {
     tentativasHTML.innerHTML = tentativas;
     recordHTML.innerHTML = atualRecord;
 })();
+
+function finalizePartida(){
+    alert();
+}
