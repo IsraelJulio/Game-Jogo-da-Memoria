@@ -1,13 +1,19 @@
 const cards = document.querySelectorAll('.card');
+let acertos = 0;
 let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockBoard = false;
-
+let tentativas = 0;
+let atualRecord = 0;
+let tentativasHTML = document.getElementById("pontos")
+let recordHTML = document.getElementById("record")
 //função para virar carta
 function flipCard() {
     if(lockBoard) return;
     if(this === firstCard) return;
 
+    tentativas++;
+    tentativasHTML.innerHTML = tentativas;
     this.classList.add('flip');
     if(!hasFlippedCard) {
         hasFlippedCard = true;
@@ -24,6 +30,7 @@ function flipCard() {
 function checkForMatch() {
     if(firstCard.dataset.card === secondCard.dataset.card) {
         disableCards();
+        acertos = acertos+2;
         return;
     }
 
@@ -68,3 +75,8 @@ function resetBoard() {
 cards.forEach((card) => {
     card.addEventListener('click', flipCard)
 });
+
+(function inicialisaPlacares(){
+    tentativasHTML.innerHTML = tentativas;
+    recordHTML.innerHTML = atualRecord;
+})();

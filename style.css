@@ -7,7 +7,9 @@
 body {
     height: 100vh;
     display: flex;
-    background-image: url(./img/wallpaper.jpg);
+    background-image: url(./img/3e2d6c43bac476c695fcc3ea73ddc29b.jpg);
+    flex-direction: column;
+    /* align-items: center; */
 }
 
 .memory-game {
@@ -24,11 +26,12 @@ body {
     width: calc(25% - 10px);
     margin: 5px;
     position: relative;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
     cursor: pointer;
     transform: scale(1);
     transform-style: preserve-3d; /* adiciona perspectiva 3d, para que o elemento nao fique achatada no plano */
     transition: transform .9s; /* adiciona efeito de movimento ao flip do card */
+
 }
 
 .card:active{
@@ -56,3 +59,29 @@ body {
 .card.flip {
     transform: rotateY(180deg);
 }
+.text-info{
+
+    font-size:30px;
+    font-family: 'New Super Mario Font U',Arial,Helvetica,sans-serif;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+    padding-bottom: 0;
+}
+.info{    
+    display: flex; 
+    font-family: 'New Super Mario Font U',Arial,Helvetica,sans-serif;
+    font-size:70px;
+    color: rgb(248 216 110);
+    text-shadow:2px 2px rgb(2 89 206);;
+       
+}
+#pontos{
+    padding-left: 20px;
+}
+#record{
+    padding-left: 20px;
+}
+

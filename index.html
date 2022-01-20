@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./img/Mushroom.webp" />
+    <link href="http://fonts.cdnfonts.com/css/new-super-mario-font-u" rel="stylesheet">
     <title>Jogo da memória</title>
 </head>
+ <div class=text-info>
+        <div class="total info">
+            <!-- <img src="https://fontmeme.com/permalink/220120/c5a44e4d9b326eab39583a470aba404a.png" alt="Total de Tentativas" border="0"> -->
+        <label>Total de Tentativas:</label>
+            <div id="pontos"></div>
+        </div>
+        <div class="recorde info">
+            Recorde:
+            <!-- <img src="https://fontmeme.com/permalink/220120/f48fe2ca03459125d543e725ffd374d2.png" alt="Recorde" border="0">        -->
+            <div id="record"></div>
+        </div>
+    </div>
 <body>
+   
     <main class="memory-game">
         <div class="card" data-card="bowser">
             <img class="card-front" src="./img/bowser.png" alt="Face da carta">
@@ -56,7 +71,12 @@
             <img class="card-front" src="./img/yoshi.png" alt="Face da carta">
             <img class="card-back" src="./img/box.png" alt="Verso da carta">
         </div>
+        <div class="box-content">
+        </div>
     </main>
-    <script src="./script.js"></script>
 </body>
+
+  
+
+<script src="./script.js"></script>
 </html>
